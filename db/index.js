@@ -47,7 +47,7 @@ exports.addUser = (req, res)=> {
 
     User.find({email:email},(err,user,next) => {
         //console.log(user);
-        if(user.length === 0) {
+        if(user.length === 0 && !email.endsWith("@jcboseust.ac.in")) {
             var newUser = new User({
                 fullname: fullname,
                 rollno: rollno,

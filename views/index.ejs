@@ -13,6 +13,15 @@
 </head>
 
 <body>
+
+  <script>
+    function validateEmail(){
+      var isEmailValid = !document.forms['dataForm']['email'].value.endsWith('@jcboseust.ac.in')
+      if(!isEmailValid)alert("Email with domain jcboseust.ac.in not allowed");
+      return isEmailValid;
+    }
+  </script>
+
   <% if(message.length> 0) { %>
     <div class="alert">
       <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
@@ -88,7 +97,7 @@
           </div>
           <div class="contact">
             <h3>Register</h3>
-            <form action="/addUser" method="POST" id="registration-form">
+            <form name="dataForm" action="/addUser" method="POST" onsubmit="return validateEmail()" id="registration-form">
               <p>
                 <input id="name" name="fullname" type="text" class="validate" required="" aria-required="true">
                 <label for="name">Full Name*</label>
